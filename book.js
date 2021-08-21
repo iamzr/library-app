@@ -4,22 +4,22 @@ let myLibrary = [{
     pages: "400",
     isRead: false,
 }, {
-    title: "Lost",
+    title: "Lost1",
     author: "Some guy",
     pages: "200",
     isRead: true
 }, {
-    title: "Lost",
+    title: "Lost2",
     author: "Some guy",
     pages: "200",
     isRead: true
 }, {
-    title: "Lost",
+    title: "Lost3",
     author: "Some guy",
     pages: "200",
     isRead: true
 }, {
-    title: "Lost",
+    title: "Lost4",
     author: "Some guy",
     pages: "200",
     isRead: true
@@ -51,7 +51,8 @@ function displayBooks (Library) {
         <p>Title: ${book.title}</p>
         <p>Author: ${book.author}</p>
         <p>Pages: ${book.pages}</p>
-        <button class="read-button">${book.isRead == true ? "Read" : "Unread"}</button>
+        ${book.isRead == true ? '<button class="read-button read">Read</button>' : '<button class="read-button unread">Unread</button>'}
+        <button class="remove-button">Remove</button>
         `;
         bookContainer.appendChild(div)
     })
@@ -67,8 +68,7 @@ const closeButton = document.getElementById("close-button")
 // New book button opens form
 newBookButton.addEventListener("click", () => {
     formContainer.style.display = "block";
-}
-)
+})
 
 // Close buttons closes form
 closeButton.addEventListener("click", () => {
@@ -80,4 +80,30 @@ window.addEventListener("click", (e) => {
     if (e.target == formContainer) {
         formContainer.style.display = "none";
     }
+})
+
+// Clicking read button
+const isReadButtons = document.querySelectorAll(".read-button")
+
+isReadButtons.forEach(isReadButton => {
+    isReadButton.addEventListener("click", () => {
+        if (isReadButton.textContent == "Read") {
+            isReadButton.textContent = "Unread";
+            isReadButton.classList = "read-button unread"
+        } else if (isReadButton.textContent == "Unread") {
+            isReadButton.textContent = "Read";
+            isReadButton.classList = "read-button read"
+        }  
+    })
+
+})
+
+// Clicking remove button
+const removeButtons = document.querySelectorAll(".remove-button");
+
+removeButtons.forEach(removeButton => {
+    removeButton.addEventListener("click", (e) => {
+        removeButton.parentNode.remove();
+        
+    })
 })
