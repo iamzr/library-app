@@ -92,6 +92,7 @@ function displayBooks (Library) {
         p = document.createElement("p")
         div = document.createElement("div")
         div.classList = "card"
+        div.id = book.title
 
         div.innerHTML = `
         <p>Title: ${book.title}</p>
@@ -170,7 +171,11 @@ const removeButtons = document.querySelectorAll(".remove-button");
 
 removeButtons.forEach(removeButton => {
     removeButton.addEventListener("click", (e) => {
-        removeButton.parentNode.remove();
+        book = removeButton.parentNode.id
+        index = myLibrary.findIndex(x => x.title==book)
+        myLibrary.splice(index, 1)
+        updateLibrary(myLibrary)
+        document.location.reload(true)
     })
 })
 
@@ -181,5 +186,11 @@ resetLibraryButton.addEventListener("click", () => {
     localStorage.removeItem("myLibrary")
     localStorage.setItem("myLibrary", JSON.stringify(myLibraryDefault))
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
-    displayBooks(myLibrary)
+    document.location.reload(true)
 })
+
+// Update storage
+function updateLibrary(myLibrary){
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"))
+}
