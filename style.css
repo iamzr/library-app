@@ -84,7 +84,7 @@ input[type="text"], input[type="number"] {
     resize:vertical;
 }
 
-input[type=submit] {
+#submit-button {
     background-color: green;
     color: white;
     padding: 10px 15px;
