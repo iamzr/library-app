@@ -61,7 +61,6 @@ if (storageAvailable("localStorage")) {
     alert("Local storage is not available, please enable")
 }
 
-
 displayBooks(myLibrary);
 
 
@@ -142,7 +141,7 @@ form.addEventListener("submit", () => {
     let pageInput = document.getElementById("pages-input").value;
     let readInput = document.getElementById("read-input").value;
 
-    newBook = Book(titleInput, authorInput, pageInput, readInput);
+    newBook = new Book(titleInput, authorInput, pageInput, readInput);
     addBookToLibrary(newBook);
 })
 
