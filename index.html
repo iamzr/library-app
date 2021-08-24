@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Library</title>
+  <title>My Book Collection</title>
   <meta charset="UTF-8"/>
   <link rel="stylesheet" href="style.css">
   <script src="book.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@900&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-    <h1>Library</h1>
+    <button id="add">add</button>
+    <h1>My Book Collection</h1>
     <button id="new-book-button">New Book</button>
+    <button id="reset-library">Reset Library</button>
   </header>
   <div id="new-book-form-container">
     <button id="close-button">&times;</button>
     <form id="new-book-form">
-      <label for="title">Book Title</label>
-      <input type="text" id="title" name="title" placeholder="Title of the book e.g. Harry Potter and the Philosopher's Stone">
-      <label for="author">Author</label>
-      <input type="text" id="author" name="author" placeholder="Author of the book e.g. J. K. Rowling">
-      <label for="pages">Pages</label>
-      <input type="number" id="pages" name="pages" placeholder="How many pages does your book have?">
-      <label for="read">Have you finished reading it?</label>
-      <input type="checkbox" id="read" name="read" placeholder="Yes">
-      <input type="submit" value="Submit">
+      <label for="title-input">Book Title</label>
+      <input type="text" id="title-input" name="title" placeholder="Title of the book e.g. Harry Potter and the Philosopher's Stone">
+      <label for="author-input">Author</label>
+      <input type="text" id="author-input" name="author" placeholder="Author of the book e.g. J. K. Rowling">
+      <label for="pages-input">Pages</label>
+      <input type="number" id="pages-input" name="pages" placeholder="How many pages does your book have?">
+      <label for="read-input">Read</label>
+      <input type="checkbox" id="read-input" name="read" placeholder="Yes">
+      <button id="submit-button" type="submit">Submit</button>
     </form>
   </div>
 
+  <div id="stats-container">
+    <p id="total-books">Total books:</p>
+    <p id="books-read">Books read:</p>
+    <p id="pages-read">Pages read:</p>
+  </div>
   <div id="book-container" class="cards"></div>
 </body>
 </html>

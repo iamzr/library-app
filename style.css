@@ -1,12 +1,32 @@
 body {
     margin: 0;
+    font-family: 'Roboto', sans-serif;
 }
 
 header {
     margin: 0;
     padding: 20px;
-    background-color: #0081AF ;
+    background-color: #aed1dd ;
     color: white;
+    font-family: "Roboto Slab";
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+
+}
+
+.read {
+    background-color: rgba(144,238,144, 0.75) ;
+}
+
+.unread {
+    background-color: rgba(255, 204, 203);
 }
 
 .cards {
@@ -18,7 +38,10 @@ header {
 
 .card {
     flex: 0 0 20%;
-    margin: 1%
+    margin: 3%;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 3%;
 }
 
 #new-book-form-container {
@@ -39,9 +62,11 @@ header {
 }
 
 #close-button {
-    color: #aaa;
     float: right; 
     font-size: 28px;
+    background:transparent;
+    border-color:transparent;
+    margin: 5px 7px;
 }
 
 #close-button:hover, #close-button:focus {
@@ -50,7 +75,7 @@ header {
     cursor:pointer;
 }
 
-input[type="text"] {
+input[type="text"], input[type="number"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
@@ -59,7 +84,7 @@ input[type="text"] {
     resize:vertical;
 }
 
-input[type=submit] {
+#submit-button {
     background-color: green;
     color: white;
     padding: 10px 15px;
