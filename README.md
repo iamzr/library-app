@@ -1,3 +1,3 @@
-# library-app
+# Library App
 
-Library App, keep a collection of a the books you've read and want to read
+Keep a collection of a the books you've read and want to read
