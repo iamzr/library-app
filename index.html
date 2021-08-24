@@ -13,6 +13,7 @@
 </head>
 <body>
   <header>
+    <button id="add">add</button>
     <h1>My Book Collection</h1>
     <button id="new-book-button">New Book</button>
     <button id="reset-library">Reset Library</button>
@@ -28,10 +29,15 @@
       <input type="number" id="pages-input" name="pages" placeholder="How many pages does your book have?">
       <label for="read-input">Read</label>
       <input type="checkbox" id="read-input" name="read" placeholder="Yes">
-      <button id="submit-button">Submit</button>
+      <button id="submit-button" type="submit">Submit</button>
     </form>
   </div>
 
+  <div id="stats-container">
+    <p id="total-books">Total books:</p>
+    <p id="books-read">Books read:</p>
+    <p id="pages-read">Pages read:</p>
+  </div>
   <div id="book-container" class="cards"></div>
 </body>
 </html>

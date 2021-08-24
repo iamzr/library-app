@@ -63,10 +63,9 @@ if (storageAvailable("localStorage")) {
 
 displayBooks(myLibrary);
 
-
 //// All functions 
 
-// BOOK function
+// Book Constructor
 function Book(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
@@ -78,18 +77,27 @@ function Book(title, author, pages, isRead) {
     }
 }
 
+// Library Constructor
+function Library(array) {
+    this.bookCollection = array;
+
+    this.numOfBooks = function () {
+
+    }
+} 
+
 function addBookToLibrary(userBook) {
     myLibrary.push(userBook);
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"))
 }
-
     
 function displayBooks (Library) {
     document.getElementById("book-container").innerHTML = "";
+    
+    // Card for each book
     Library.forEach(book => {
         bookContainer = document.getElementById("book-container")
-        p = document.createElement("p")
         div = document.createElement("div")
         div.classList = "card"
         div.id = book.title
@@ -103,6 +111,8 @@ function displayBooks (Library) {
         `;
         bookContainer.appendChild(div)
     })
+    
+    updateStats(Library);
 }
 
 
@@ -136,7 +146,7 @@ window.addEventListener("click", (e) => {
 
 const form = document.getElementById("new-book-form");
 
-form.addEventListener("submit", () => {
+form.onsubmit = () => {
     let titleInput = document.getElementById("title-input").value;
     let authorInput = document.getElementById("author-input").value;
     let pageInput = document.getElementById("pages-input").value;
@@ -144,7 +154,7 @@ form.addEventListener("submit", () => {
 
     newBook = new Book(titleInput, authorInput, pageInput, readInput);
     addBookToLibrary(newBook);
-})
+}
 
 
 
@@ -158,9 +168,18 @@ isReadButtons.forEach(isReadButton => {
         if (isReadButton.textContent == "Read") {
             isReadButton.textContent = "Unread";
             isReadButton.classList = "read-button unread"
+            book = isReadButton.parentNode.id 
+            index = myLibrary.findIndex(x => x.title==book)
+            myLibrary[index].isRead = false
+            updateLibrary(myLibrary)
+
         } else if (isReadButton.textContent == "Unread") {
             isReadButton.textContent = "Read";
             isReadButton.classList = "read-button read"
+            book = isReadButton.parentNode.id 
+            index = myLibrary.findIndex(x => x.title==book)
+            myLibrary[index].isRead = true
+            updateLibrary(myLibrary)
         }  
     })
 
@@ -193,4 +212,35 @@ resetLibraryButton.addEventListener("click", () => {
 function updateLibrary(myLibrary){
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"))
+    updateStats(myLibrary);
+}
+
+function updateStats(Library) {
+    // Library stats
+    booksRead = Library.filter(book => book.isRead === true);
+    let pagesRead = 0;
+    for (let i=0; i<booksRead.length; i++) {
+        pagesRead += parseInt(booksRead[i].pages)
+    }
+    statusContainer = document.getElementById("stats-container");
+    div = document.createElement("div");
+    div.classList = "stats";
+
+    totalBooksDiv = document.getElementById("total-books")
+    booksReadDiv = document.getElementById("books-read")
+    pagesReadDiv = document.getElementById("pages-read")
+
+    totalBooksDiv.textContent = `Total books: ${Library.length}`
+    booksReadDiv.textContent = `Books read: ${booksRead.length}`
+    pagesReadDiv.textContent = `Pages read: ${pagesRead}`
+
+    statusContainer.appendChild(div)
+}
+
+//
+const add = document.getElementById("add")
+add.onclick = () => {
+    div = document.createElement("div")
+    div.innerHTML = "<p>interesting</p>"
+    document.getElementById("reset-library").appendChild(div)
 }
