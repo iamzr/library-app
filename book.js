@@ -150,13 +150,12 @@ form.onsubmit = () => {
     let titleInput = document.getElementById("title-input").value;
     let authorInput = document.getElementById("author-input").value;
     let pageInput = document.getElementById("pages-input").value;
-    let readInput = document.getElementById("read-input").value;
+    let readInput = document.getElementById("read-input").checked;
 
+    console.log(readInput)
     newBook = new Book(titleInput, authorInput, pageInput, readInput);
     addBookToLibrary(newBook);
 }
-
-
 
 // CARD FUNCTIONS
 
@@ -235,12 +234,4 @@ function updateStats(Library) {
     pagesReadDiv.textContent = `Pages read: ${pagesRead}`
 
     statusContainer.appendChild(div)
-}
-
-//
-const add = document.getElementById("add")
-add.onclick = () => {
-    div = document.createElement("div")
-    div.innerHTML = "<p>interesting</p>"
-    document.getElementById("reset-library").appendChild(div)
 }

@@ -1,12 +1,13 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif;
+    background-color:#ebf6fa ;
 }
 
 header {
     margin: 0;
     padding: 20px;
-    background-color: #aed1dd ;
+    background-color: #37a4c8;
     color: white;
     font-family: "Roboto Slab";
 }
@@ -31,17 +32,21 @@ button {
 
 .cards {
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
+    justify-content: space-evenly;
 }
 
 .card {
     flex: 0 0 20%;
     margin: 3%;
-    border: 1px solid black;
-    border-radius: 20px;
+    background-color: #833722;
+    color: white;
+    border: 5px solid #812106;
+    border-radius: 5px;
     padding: 3%;
+    max-width: 150px ;
+    max-height: 300px;
 }
 
 #new-book-form-container {
@@ -97,4 +102,12 @@ input[type="text"], input[type="number"] {
 label {
     padding: 12px;
     display: inline-block;
+}
+
+#stats-container {
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+    background-color: #7bc3db ;
+    color: white;
 }
