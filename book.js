@@ -1,3 +1,24 @@
+// Library class
+class library {
+    constructor(array) {
+        this.array = array;
+    }
+
+    numOfBooks() {
+        return this.array.length;
+    }
+
+    booksRead() {
+        booksRead = 0;
+        for (let i=0; i<this.array.length; i++) {
+            if (this.array[i].isRead) {
+                booksRead++;
+            }
+        }
+        return booksRead
+    }
+}
+
 let myLibraryDefault = [{
     title: "Harry Potter",
     author: "J.K. Rowling",
